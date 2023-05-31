@@ -29,13 +29,9 @@
                     </thead>
                     <tbody>
                         <c:forEach var="score" items="${scoreList}">
-                            <tr>
+                            <tr onclick="location.href='/score/detail?studentNumber=${score.studentNumber}'">
                                 <th scope="row">${score.studentNumber}</th>
-                                <td>
-                                    <a href="/score/detail?studentNumber=${score.studentNumber}"
-                                        class="text-decoration-none" style="color: black;">
-                                        ${score.name}</a>
-                                </td>
+                                <td>${score.name}</td>
                                 <td>${score.korScore}</td>
                                 <td>${score.engScore}</td>
                                 <td>${score.mathScore}</td>
