@@ -47,11 +47,11 @@
                 </table>
                 <div class="position-relative">
                     <div class="position-absolute top-0 start-0">
-                        <button type="button" class="btn btn-outline-secondary"
-                            onclick="location.href='/score/list'">돌아가기</button>
+                        <a href="/score/list" class="btn btn-outline-secondary">돌아가기</a>
                     </div>
                     <div class="position-absolute top-0 end-0">
-                        <form action="/score/remove?studentNumber=${score.studentNumber}" method="POST">
+                        <form action="/score/remove" method="POST">
+                            <input type="hidden" name="studentNumber" value="${score.studentNumber}">
                             <button type="submit" class="btn btn-outline-danger">삭제</button>
                         </form>
                     </div>
