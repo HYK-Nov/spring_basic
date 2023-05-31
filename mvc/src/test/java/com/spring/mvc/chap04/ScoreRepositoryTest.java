@@ -8,10 +8,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ScoreRepositoryTest {
 //    테스트 대상인 ScoreRepositoryImpl 클래스를 상단에 선언
+
     ScoreRepository repository = new ScoreRepositoryImpl();
 
     @Test
@@ -85,15 +87,18 @@ public class ScoreRepositoryTest {
 
     @Test
     @DisplayName("삭제하고 남은 데이터 2개이어야 함")
-    public void deleteByStudentNumberTest(){
+    public void deleteTest(){
 //        GIVEN
-        int studentNumber = 1;
+        int studentNumber = 2;
 //        WHEN
-        boolean boolResult = repository.deleteByStudentNumber(studentNumber);
+        repository.deleteByStudentNumber(studentNumber);
         List<Score> result = repository.findAll(); // 저장한 후 전체 데이터 가져오기
+        Score score = repository.findByStudentNumber(studentNumber);
 //        THEN
-        assertTrue(boolResult);
-        assertEquals(2, result.size());
+//        assertEquals(2, result.size());
+        assertThat(2).isEqualTo(result.size());
+        assertNull(score);
+        System.out.println(result);
     }
 
 }
